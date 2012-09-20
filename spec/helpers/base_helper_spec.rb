@@ -29,4 +29,10 @@ describe SimpleResource::BaseHelper do
       helper.resource_title.should eq("Locale #{locale.id}")
     end
   end
+
+  describe "#collection_title" do
+    it "returns collection title" do
+      helper.collection_title.should eq("Locales")
+    end
+  end
 end

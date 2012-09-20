@@ -11,5 +11,10 @@ module SimpleResource
     def resource_title
       "#{resource_human_name} #{resource.id}"
     end
+
+    def collection_title
+      I18n.t("activerecord.models.#{controller_name.singularize}.other",
+        default: controller_name.humanize)
+    end
   end
 end
