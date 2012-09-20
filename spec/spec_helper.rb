@@ -36,5 +36,6 @@ Spork.prefork do
 end
 
 Spork.each_run do
+  ActiveSupport::Dependencies.clear
   FactoryGirl.reload
 end
