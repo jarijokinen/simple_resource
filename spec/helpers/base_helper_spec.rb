@@ -101,4 +101,33 @@ describe SimpleResource::BaseHelper do
       helper.resource_attributes.should == ["id", "name", "created_at", "updated_at"]
     end
   end
+
+  describe "#non_human_attributes" do
+    it "returns non human attributes" do
+      helper.non_human_attributes == ["id", "created_at", "updated_at"]
+    end
+  end
+  
+  describe "#resource_human_attributes" do
+    context "when resource doesn't have a parent resource" do
+      it "returns resource human attributes" do
+        helper.resource_human_attributes.should == ["name"]
+      end
+    end
+
+    context "when resource has a parent resource" do
+      before :each do
+        category = FactoryGirl.create(:category)
+        post = FactoryGirl.create(:post, category: category)
+        @controller = PostsController.new
+        @controller.request = ActionDispatch::TestRequest.new
+        @controller.instance_variable_set("@category", category)
+        @controller.instance_variable_set("@post", post)
+      end
+
+      it "returns resource human attributes" do
+        helper.resource_human_attributes.should == ["language_id", "title", "content"]
+      end
+    end
+  end
 end

@@ -34,5 +34,17 @@ module SimpleResource
     def resource_attributes
       resource_class.attribute_names
     end
+
+    def non_human_attributes
+      %w(id updated_at created_at)
+    end
+
+    def resource_human_attributes
+      human_attributes = resource_attributes - non_human_attributes
+      if respond_to?("parent?")
+        human_attributes = human_attributes - ["#{parent.class.name.underscore}_id"]
+      end
+      human_attributes
+    end
   end
 end
