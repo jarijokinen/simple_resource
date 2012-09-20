@@ -7,5 +7,9 @@ module SimpleResource
         resource_class.model_name.human
       end
     end
+
+    def resource_title
+      "#{resource_human_name} #{resource.id}"
+    end
   end
 end
