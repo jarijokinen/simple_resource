@@ -11,9 +11,10 @@ Spork.prefork do
   require "database_cleaner"
   require "factory_girl_rails"
   require "forgery"
-
+  
+  Dir[Rails.root.join("../support/**/*.rb")].each {|f| require f}
   DatabaseCleaner.strategy = :truncation
-
+  
   RSpec.configure do |config|
     config.fail_fast = true
     config.use_transactional_fixtures = false
@@ -30,9 +31,9 @@ Spork.prefork do
     config.after :each do
       DatabaseCleaner.clean
     end
+    
+    config.include Helpers
   end
-  
-  # Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 end
 
 Spork.each_run do

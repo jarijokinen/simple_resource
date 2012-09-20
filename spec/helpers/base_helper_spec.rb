@@ -15,11 +15,23 @@ describe SimpleResource::BaseHelper do
       it "returns resource human name" do
         helper.resource_human_name("Locale").should eq("Locale")
       end
+      
+      it "returns translated resource human name" do
+        set_locale
+        helper.resource_human_name("Locale").should eq("Kieli")
+        reset_locale
+      end
     end
 
     context "when resource class is not defined" do
       it "returns resource human name" do
         helper.resource_human_name.should eq("Locale")
+      end
+      
+      it "returns translated resource human name" do
+        set_locale
+        helper.resource_human_name.should eq("Kieli")
+        reset_locale
       end
     end
   end
@@ -28,55 +40,47 @@ describe SimpleResource::BaseHelper do
     it "returns resource title" do
       helper.resource_title.should eq("Locale #{locale.id}")
     end
+    
+    it "returns translated resource title" do
+      set_locale
+      helper.resource_title.should eq("Kieli #{locale.id}")
+      reset_locale
+    end
   end
 
   describe "#collection_title" do
     it "returns collection title" do
       helper.collection_title.should eq("Locales")
     end
+    
+    it "returns translated collection title" do
+      set_locale
+      helper.collection_title.should eq("Kielet")
+      reset_locale
+    end
   end
 
   describe "#new_resource_title" do
-    context "when I18n.locale is set" do
-      before :each do
-        I18n.locale = "fi"
-      end
-
-      after :each do
-        I18n.locale = I18n.default_locale
-      end
-
-      it "returns translation for a new resource title" do
-        helper.new_resource_title.should eq("Uusi Kieli")
-      end
+    it "returns default new resource title" do
+      helper.new_resource_title.should eq("New Locale")
     end
 
-    context "when I18n.locale is not set" do
-      it "returns default new resource title" do
-        helper.new_resource_title.should eq("New Locale")
-      end
+    it "returns translation for a new resource title" do
+      set_locale
+      helper.new_resource_title.should eq("Uusi Kieli")
+      reset_locale
     end
   end
 
   describe "#new_resource_link" do
-    context "when I18n.locale is set" do
-      before :each do
-        I18n.locale = "fi"
-      end
-
-      after :each do
-        I18n.locale = I18n.default_locale
-      end
-
-      it "returns localized version of new resource link" do
-        helper.new_resource_link.should eq('<a href="/locales/new">Uusi Kieli</a>')
-      end
+    it "returns default version of new resource link" do
+      helper.new_resource_link.should eq('<a href="/locales/new">New Locale</a>')
     end
 
-    context "when I18n.locale is not set" do
-      it "returns default version of new resource link" do
-        helper.new_resource_link.should eq('<a href="/locales/new">New Locale</a>')
-      end
-    end
+    it "returns translated version of new resource link" do
+      set_locale
+      helper.new_resource_link.should eq('<a href="/locales/new">Uusi Kieli</a>')
+      reset_locale
+    end 
   end
 end
