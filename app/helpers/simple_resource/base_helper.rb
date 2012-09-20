@@ -46,5 +46,11 @@ module SimpleResource
       end
       human_attributes
     end
+
+    def attribute_human_name(attribute_name)
+      attribute_name = attribute_name.to_s
+      I18n.t("activerecord.attributes.#{controller_name.singularize}.#{attribute_name}",
+        default: attribute_name.humanize)
+    end
   end
 end

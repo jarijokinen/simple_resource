@@ -4,6 +4,9 @@ fi:
       language:
         one: "Kieli"
         other: "Kielet"
+    attributes:
+      language:
+        name: "Nimi"
   simple_resource:
     new: "Uusi %{resource_name}"
     edit: "Muokkaa %{resource_name}"

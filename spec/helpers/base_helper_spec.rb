@@ -129,4 +129,24 @@ describe SimpleResource::BaseHelper do
       end
     end
   end
+
+  describe "#attribute_human_name" do
+    it "returns attribute human name" do
+      helper.attribute_human_name(:name).should eq("Name")
+    end
+
+    it "returns translated attribute numan name" do
+      set_locale
+      helper.attribute_human_name(:name).should eq("Nimi")
+      reset_locale
+    end
+
+    it "accepts attribute name as Symbol" do
+      helper.attribute_human_name(:name).should eq("Name")
+    end
+
+    it "accepts attribute name as String" do
+      helper.attribute_human_name("name").should eq("Name")
+    end
+  end
 end
