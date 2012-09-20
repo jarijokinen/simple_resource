@@ -8,8 +8,8 @@ SimpleResource speeds up development of standard Rails applications by integrati
 * Internationalization support
 * Support for your own form builders
 * Support for external form builders
-** [Formtastic](https://github.com/justinfrench/formtastic)
-** [SimpleForm](https://github.com/plataformatec/simple_form)
+    * [Formtastic](https://github.com/justinfrench/formtastic)
+    * [SimpleForm](https://github.com/plataformatec/simple_form)
 
 ## Requirements
 
