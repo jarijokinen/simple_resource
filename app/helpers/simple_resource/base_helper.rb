@@ -30,5 +30,9 @@ module SimpleResource
       I18n.t("simple_resource.edit", resource_name: resource_human_name, 
         default: "Edit #{resource_human_name}")
     end
+
+    def resource_attributes
+      resource_class.attribute_names
+    end
   end
 end

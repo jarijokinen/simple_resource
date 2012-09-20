@@ -95,4 +95,10 @@ describe SimpleResource::BaseHelper do
       reset_locale
     end
   end
+
+  describe "#resource_attributes" do
+    it "returns resource attributes" do
+      helper.resource_attributes.should == ["id", "name", "created_at", "updated_at"]
+    end
+  end
 end
