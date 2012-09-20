@@ -1,5 +1,4 @@
 require "spec_helper"
-require "dummy/app/controllers/languages_controller"
 
 describe SimpleResource::BaseHelper do
   let(:language) { FactoryGirl.create(:language) }
