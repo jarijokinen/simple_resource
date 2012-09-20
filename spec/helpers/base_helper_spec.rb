@@ -83,4 +83,16 @@ describe SimpleResource::BaseHelper do
       reset_locale
     end 
   end
+  
+  describe "#edit_resource_title" do
+    it "returns default edit resource title" do
+      helper.edit_resource_title.should eq("Edit Language")
+    end
+
+    it "returns translation for a edit resource title" do
+      set_locale
+      helper.edit_resource_title.should eq("Muokkaa Kieli")
+      reset_locale
+    end
+  end
 end

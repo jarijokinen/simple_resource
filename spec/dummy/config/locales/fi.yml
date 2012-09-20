@@ -6,3 +6,4 @@ fi:
         other: "Kielet"
   simple_resource:
     new: "Uusi %{resource_name}"
+    edit: "Muokkaa %{resource_name}"
