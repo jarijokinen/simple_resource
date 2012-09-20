@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(:version => 20120920095910) do
 
-  create_table "locales", :force => true do |t|
+  create_table "languages", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

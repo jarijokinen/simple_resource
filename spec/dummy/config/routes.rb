@@ -1,3 +1,3 @@
 Dummy::Application.routes.draw do
-  resources :locales
+  resources :languages
 end

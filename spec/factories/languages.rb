@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :locale do
+  factory :language do
     name { Forgery(:basic).text }
   end
 end

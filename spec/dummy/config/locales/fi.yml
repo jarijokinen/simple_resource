@@ -1,7 +1,7 @@
 fi:
   activerecord:
     models:
-      locale:
+      language:
         one: "Kieli"
         other: "Kielet"
   simple_resource:
