@@ -16,5 +16,14 @@ module SimpleResource
       I18n.t("activerecord.models.#{controller_name.singularize}.other",
         default: controller_name.humanize)
     end
+
+    def new_resource_title
+      I18n.t("simple_resource.new", resource_name: resource_human_name, 
+        default: "New #{resource_human_name}")
+    end
+
+    def new_resource_link
+      link_to(new_resource_title, new_resource_path)
+    end
   end
 end

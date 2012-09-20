@@ -1,0 +1,8 @@
+fi:
+  activerecord:
+    models:
+      locale:
+        one: "Kieli"
+        other: "Kielet"
+  simple_resource:
+    new: "Uusi %{resource_name}"
