@@ -52,5 +52,14 @@ module SimpleResource
       I18n.t("activerecord.attributes.#{controller_name.singularize}.#{attribute_name}",
         default: attribute_name.humanize)
     end
+
+    def attribute_value(resource, attribute_name, truncation = 50)
+      value = resource.send(attribute_name).to_s.truncate(truncation)
+      if attribute_name.to_s.match(/_id$/)
+        model_name = attribute_name.gsub(/_id$/, "").classify
+        value = eval(model_name).find(value).to_s
+      end
+      value
+    end
   end
 end

@@ -133,11 +133,13 @@ describe SimpleResource::BaseHelper do
   describe "#attribute_human_name" do
     it "returns attribute human name" do
       helper.attribute_human_name(:name).should eq("Name")
+      helper.attribute_human_name(:created_at).should eq("Created at")
     end
 
     it "returns translated attribute numan name" do
       set_locale
       helper.attribute_human_name(:name).should eq("Nimi")
+      helper.attribute_human_name(:created_at).should eq("Created at")
       reset_locale
     end
 
@@ -147,6 +149,26 @@ describe SimpleResource::BaseHelper do
 
     it "accepts attribute name as String" do
       helper.attribute_human_name("name").should eq("Name")
+    end
+  end
+
+  describe "#attribute_value" do
+    context "when attribute value is short" do
+      it "returns attribute value without truncation" do
+        helper.attribute_value(language, :name).should eq(language.name)
+      end
+    end
+
+    context "when attribute value is long" do
+      before :each do
+        @resource = FactoryGirl.create(:language)
+        @resource.name = Forgery(:lorem_ipsum).words(100)
+      end
+
+      it "returns truncated attribute value" do
+        expected = @resource.name.truncate(50)
+        helper.attribute_value(@resource, :name).should eq(expected)
+      end
     end
   end
 end
