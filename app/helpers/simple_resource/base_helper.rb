@@ -61,5 +61,15 @@ module SimpleResource
       end
       value
     end
+
+    def link_to_action(action_name, title, path)
+      action_name = action_name.to_sym
+      if action_name == :delete
+        link_to(t(action_name, default: title), path,
+          method: :delete, confirm: t(:delete_confirmation, default: "Are you sure?"))
+      else
+        link_to(t(action_name, default: title), path)
+      end
+    end
   end
 end

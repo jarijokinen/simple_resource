@@ -171,4 +171,30 @@ describe SimpleResource::BaseHelper do
       end
     end
   end
+
+  describe "#link_to_action" do
+    context "with action :show" do
+      it "returns show link" do
+        helper.link_to_action(:show, "Show", "/languages/1").should eq('<a href="/languages/1">Show</a>')
+      end
+    end
+    
+    context "with action :edit" do
+      it "returns edit link" do
+        helper.link_to_action(:edit, "Edit", "/languages/1/edit").should eq('<a href="/languages/1/edit">Edit</a>')
+      end
+    end
+    
+    context "with action :delete" do
+      it "returns delete link" do
+        helper.link_to_action(:delete, "Delete", "/languages/1").should eq('<a href="/languages/1" data-confirm="Are you sure?" data-method="delete" rel="nofollow">Delete</a>')
+      end
+    end
+    
+    context "with custom action" do
+      it "returns link to custom action" do
+        helper.link_to_action(:children, "Children", "/languages/1/children").should eq('<a href="/languages/1/children">Children</a>')
+      end
+    end
+  end
 end
