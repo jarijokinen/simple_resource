@@ -310,10 +310,10 @@ describe SimpleResource::BaseHelper do
     end
   end
 
-  describe "#render_actions_for", focus: true do
+  describe "#render_actions_for" do
     let(:collection) { FactoryGirl.create_list(:language, 10) }
 
-    it "returns actions for given resource" do
+    it "returns actions for given resource in HTML" do
       collection.each do |resource|
         expected =  %Q(<a href="/languages/#{resource.id}">Show</a>\n)
         expected += %Q(<a href="/languages/#{resource.id}/edit">Edit</a>\n)
@@ -321,6 +321,31 @@ describe SimpleResource::BaseHelper do
         expected += %Q( data-method="delete" rel="nofollow">Delete</a>\n)
         helper.render_actions_for(resource).should eq(expected)
       end
+    end
+  end
+
+  describe "#render_collection_table" do
+    before :each do
+      Language.destroy_all
+    end
+
+    let(:collection) { FactoryGirl.create_list(:language, 10) }
+
+    it "returns collection table in HTML" do
+      expected =  %Q(<table>)
+      expected += %Q(<thead><tr><th>Name</th><th>&nbsp;</th></tr></thead><tbody>)
+
+      collection.each do |resource|
+        expected += %Q(<tr><td>#{resource.name}</td><td class="actions">)
+        expected += %Q(<a href="/languages/#{resource.id}">Show</a>)
+        expected += %Q(<a href="/languages/#{resource.id}/edit">Edit</a>)
+        expected += %Q(<a href="/languages/#{resource.id}" data-confirm="Are you sure?")
+        expected += %Q( data-method="delete" rel="nofollow">Delete</a>)
+        expected += %Q(</td></tr>)
+      end
+
+      expected += %Q(</tbody></table>)
+      helper.render_collection_table.gsub(/\n */, "").should eq(expected)
     end
   end
 end

@@ -1,0 +1,22 @@
+<% @title ||= collection_title %>
+
+<table>
+  <thead>
+    <tr>
+      <% attributes.each do |attribute_name| %>
+        <th><%= attribute_human_name(attribute_name) %></th>
+      <% end %>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% collection.each do |resource| %>
+      <tr>
+        <% attributes.each do |attribute_name| %>
+          <td><%= attribute_value(resource, attribute_name) %></td>
+        <% end %>
+        <td class="actions"><%= render_actions_for(resource) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

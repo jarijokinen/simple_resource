@@ -101,5 +101,11 @@ module SimpleResource
     def render_actions_for(resource)
       render "actions", resource: resource
     end
+
+    def render_collection_table(custom_attributes = nil)
+      render "collection",
+        collection: collection,
+        attributes: custom_attributes || resource_human_attributes
+    end
   end
 end
