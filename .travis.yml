@@ -2,11 +2,6 @@ language: ruby
 rvm:
   - 1.9.3
   - 1.9.2
-  - jruby-19mode
-  - rbx-19mode
-  - ruby-head
-  - jruby-head
-  - ree
 before_script:
   - "cd spec/dummy; rake db:migrate; cd ../.."
   - "cd spec/dummy; rake db:test:prepare; cd ../.."
