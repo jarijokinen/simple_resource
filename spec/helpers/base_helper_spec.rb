@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 require "spec_helper"
 
 describe SimpleResource::BaseHelper do
@@ -177,17 +178,35 @@ describe SimpleResource::BaseHelper do
       it "returns show link" do
         helper.link_to_action(:show, "Show", "/languages/1").should eq('<a href="/languages/1">Show</a>')
       end
+      
+      it "returns translated show link" do
+        set_locale
+        helper.link_to_action(:show, "Show", "/languages/1").should eq('<a href="/languages/1">Näytä</a>')
+        reset_locale
+      end
     end
     
     context "with action :edit" do
       it "returns edit link" do
         helper.link_to_action(:edit, "Edit", "/languages/1/edit").should eq('<a href="/languages/1/edit">Edit</a>')
       end
+      
+      it "returns translated edit link" do
+        set_locale
+        helper.link_to_action(:edit, "Edit", "/languages/1/edit").should eq('<a href="/languages/1/edit">Muokkaa</a>')
+        reset_locale
+      end
     end
     
     context "with action :delete" do
       it "returns delete link" do
         helper.link_to_action(:delete, "Delete", "/languages/1").should eq('<a href="/languages/1" data-confirm="Are you sure?" data-method="delete" rel="nofollow">Delete</a>')
+      end
+      
+      it "returns translated delete link" do
+        set_locale
+        helper.link_to_action(:delete, "Delete", "/languages/1").should eq('<a href="/languages/1" data-confirm="Oletko varma?" data-method="delete" rel="nofollow">Poista</a>')
+        reset_locale
       end
     end
     

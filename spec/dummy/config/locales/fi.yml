@@ -8,5 +8,9 @@ fi:
       language:
         name: "Nimi"
   simple_resource:
-    new: "Uusi %{resource_name}"
-    edit: "Muokkaa %{resource_name}"
+    new_resource: "Uusi %{resource_name}"
+    edit_resource: "Muokkaa %{resource_name}"
+    show: "Näytä"
+    edit: "Muokkaa"
+    delete: "Poista"
+    delete_confirmation: "Oletko varma?"

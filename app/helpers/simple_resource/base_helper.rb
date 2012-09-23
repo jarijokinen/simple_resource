@@ -18,7 +18,7 @@ module SimpleResource
     end
 
     def new_resource_title
-      I18n.t("simple_resource.new", resource_name: resource_human_name, 
+      I18n.t("simple_resource.new_resource", resource_name: resource_human_name, 
         default: "New #{resource_human_name}")
     end
 
@@ -27,7 +27,7 @@ module SimpleResource
     end
 
     def edit_resource_title
-      I18n.t("simple_resource.edit", resource_name: resource_human_name, 
+      I18n.t("simple_resource.edit_resource", resource_name: resource_human_name, 
         default: "Edit #{resource_human_name}")
     end
 
@@ -65,10 +65,10 @@ module SimpleResource
     def link_to_action(action_name, title, path)
       action_name = action_name.to_sym
       if action_name == :delete
-        link_to(t(action_name, default: title), path,
-          method: :delete, confirm: t(:delete_confirmation, default: "Are you sure?"))
+        link_to(t("simple_resource.#{action_name.to_s}", default: title), path,
+          method: :delete, confirm: t("simple_resource.delete_confirmation", default: "Are you sure?"))
       else
-        link_to(t(action_name, default: title), path)
+        link_to(t("simple_resource.#{action_name.to_s}", default: title), path)
       end
     end
   end
