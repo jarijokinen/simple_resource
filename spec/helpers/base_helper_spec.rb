@@ -349,7 +349,7 @@ describe SimpleResource::BaseHelper do
     end
   end
 
-  describe "#render_form", focus: true do
+  describe "#render_form" do
     describe "new action" do
       before :each do
         @controller = LanguagesController.new

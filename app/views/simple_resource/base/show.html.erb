@@ -1,0 +1,12 @@
+<% @title ||= resource_title %>
+
+<table>
+  <tbody>
+    <% resource_attributes.each do |attribute_name| %>
+      <tr>
+        <th><%= attribute_human_name(attribute_name) %></th>
+        <td><%= attribute_value(resource, attribute_name) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

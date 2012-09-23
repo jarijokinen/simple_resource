@@ -9,7 +9,6 @@ Spork.prefork do
   require "capybara/rails"
   require "capybara/rspec"
   require "database_cleaner"
-  require "factory_girl_rails"
   require "forgery"
   
   Dir[Rails.root.join("../support/**/*.rb")].each {|f| require f}
@@ -37,6 +36,7 @@ Spork.prefork do
 end
 
 Spork.each_run do
+  require "factory_girl_rails"
   ActiveSupport::Dependencies.clear
   FactoryGirl.reload
 end
