@@ -230,4 +230,83 @@ describe SimpleResource::BaseHelper do
       end
     end
   end
+
+  describe "#controller_namespaces" do
+    context "when no namespaces exist" do
+      it "returns an empty array" do
+        helper.controller_namespaces.should be_empty
+      end
+    end
+
+    context "when namespace exists" do
+      before :each do
+        @controller = Backend::LanguagesController.new
+        @controller.request = ActionDispatch::TestRequest.new
+        @controller.instance_variable_set("@language", language)
+      end
+
+      it "returns namespace in array" do
+        helper.controller_namespaces.should == ["backend"]
+      end
+    end
+  end
+
+  describe "#resource_form_path" do
+    describe "new action" do
+      before :each do
+        @controller = LanguagesController.new
+        @controller.request = ActionDispatch::TestRequest.new
+        @controller.request.action = "new"
+        @controller.instance_variable_set("@language", Language.new)
+      end
+
+      context "when no namespaces exist" do
+        it "returns path without namespace" do
+          helper.resource_form_path.should eq("/languages")
+        end
+      end
+
+      context "when namespace exists" do
+        before :each do
+          @controller = Backend::LanguagesController.new
+          @controller.request = ActionDispatch::TestRequest.new
+          @controller.request.action = "new"
+          @language = Language.new
+          @controller.instance_variable_set("@language", @language)
+        end
+
+        it "returns path with namespace" do
+          helper.resource_form_path.should == ["backend", @language]
+        end
+      end
+    end
+    
+    describe "edit action" do
+      before :each do
+        @controller = LanguagesController.new
+        @controller.request = ActionDispatch::TestRequest.new
+        @controller.request.action = "edit"
+        @controller.instance_variable_set("@language", language)
+      end
+
+      context "when no namespaces exist" do
+        it "returns path without namespace" do
+          helper.resource_form_path.should eq("/languages/#{language.id}")
+        end
+      end
+
+      context "when namespace exists" do
+        before :each do
+          @controller = Backend::LanguagesController.new
+          @controller.request = ActionDispatch::TestRequest.new
+          @controller.request.action = "edit"
+          @controller.instance_variable_set("@language", language)
+        end
+
+        it "returns path with namespace" do
+          helper.resource_form_path.should == ["backend", language]
+        end
+      end
+    end
+  end
 end

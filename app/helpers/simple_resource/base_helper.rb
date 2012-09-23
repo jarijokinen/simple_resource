@@ -79,5 +79,23 @@ module SimpleResource
       html << link_to_action(:delete, "Delete", resource_path(resource))
       html.join("\n").html_safe
     end
+
+    def controller_namespaces
+      namespaces = controller_path.split("/")
+      namespaces.pop
+      namespaces
+    end
+
+    def resource_form_path
+      if controller_namespaces.empty?
+        if !resource.new_record?
+          resource_path
+        else
+          collection_path
+        end
+      else
+        controller_namespaces | [resource]
+      end
+    end
   end
 end
