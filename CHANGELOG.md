@@ -4,6 +4,6 @@
 
 * First release with basic functionality
 
-0.0.1 (September, 2012)
+0.0.1 (September 20, 2012)
 
 * Initial release; no functionality yet
