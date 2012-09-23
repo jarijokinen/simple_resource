@@ -348,4 +348,91 @@ describe SimpleResource::BaseHelper do
       helper.render_collection_table.gsub(/\n */, "").should eq(expected)
     end
   end
+
+  describe "#render_form", focus: true do
+    describe "new action" do
+      before :each do
+        @controller = LanguagesController.new
+        @controller.request = ActionDispatch::TestRequest.new
+        @controller.request.action = "new"
+        @language = Language.new
+        @controller.instance_variable_set("@language", @language)
+      end
+
+      context "with formtastic (default) builder" do
+        it "returns form" do
+          expected = <<-END
+            <form accept-charset="UTF-8" action="/languages" class="formtastic language" 
+              id="new_language" method="post" novalidate="novalidate">
+              <div style="margin:0;padding:0;display:inline">
+                <input name="utf8" type="hidden" value="&#x2713;" />
+              </div>
+              <fieldset class="inputs">
+                <ol>
+                  <li class="string input optional stringish" id="language_name_input">
+                    <label class=" label" for="language_name">Name</label>
+                    <input id="language_name" maxlength="255" name="language[name]" type="text" />
+                  </li>
+                </ol>
+              </fieldset>
+              <fieldset class="actions">
+                <ol>
+                  <li class="action input_action " id="language_submit_action">
+                    <input name="commit" type="submit" value="Create Language" />
+                  </li>
+                  <li class="action link_action " id="language_cancel_action">
+                    <a href="/languages">Cancel</a>
+                  </li>
+                </ol>
+              </fieldset>
+            </form>
+          END
+          helper.render_form.gsub(/\n */, "").should eq(expected.gsub(/(\n|^ +)/, ""))
+        end
+      end
+    end
+    
+    describe "edit action" do
+      before :each do
+        @controller = LanguagesController.new
+        @controller.request = ActionDispatch::TestRequest.new
+        @controller.request.action = "edit"
+        @controller.instance_variable_set("@language", language)
+      end
+
+      context "with formtastic (default) builder" do
+        it "returns form" do
+          expected = <<-END
+            <form accept-charset="UTF-8" action="/languages/#{language.id}" class="formtastic language" 
+              id="edit_language_#{language.id}" method="post" novalidate="novalidate">
+              <div style="margin:0;padding:0;display:inline">
+                <input name="utf8" type="hidden" value="&#x2713;" />
+                <input name="_method" type="hidden" value="put" />
+              </div>
+              <fieldset class="inputs">
+                <ol>
+                  <li class="string input optional stringish" id="language_name_input">
+                    <label class=" label" for="language_name">Name</label>
+                    <input id="language_name" maxlength="255" name="language[name]" type="text" 
+                      value="#{language.name}" />
+                  </li>
+                </ol>
+              </fieldset>
+              <fieldset class="actions">
+                <ol>
+                  <li class="action input_action " id="language_submit_action">
+                    <input name="commit" type="submit" value="Update Language" />
+                  </li>
+                  <li class="action link_action " id="language_cancel_action">
+                    <a href="/languages">Cancel</a>
+                  </li>
+                </ol>
+              </fieldset>
+            </form>
+          END
+          helper.render_form.gsub(/\n */, "").should eq(expected.gsub(/(\n|^ +)/, ""))
+        end
+      end
+    end
+  end
 end

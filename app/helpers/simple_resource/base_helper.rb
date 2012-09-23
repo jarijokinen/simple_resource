@@ -107,5 +107,13 @@ module SimpleResource
         collection: collection,
         attributes: custom_attributes || resource_human_attributes
     end
+
+    def render_form(form_builder = "formtastic")
+      fields = resource_human_attributes
+      fields.map! do |arg|
+        arg.to_s.sub("_id", "").to_sym
+      end
+      render "simple_resource/builders/#{form_builder}", fields: fields
+    end
   end
 end
