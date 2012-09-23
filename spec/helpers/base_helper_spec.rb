@@ -309,4 +309,18 @@ describe SimpleResource::BaseHelper do
       end
     end
   end
+
+  describe "#render_actions_for", focus: true do
+    let(:collection) { FactoryGirl.create_list(:language, 10) }
+
+    it "returns actions for given resource" do
+      collection.each do |resource|
+        expected =  %Q(<a href="/languages/#{resource.id}">Show</a>\n)
+        expected += %Q(<a href="/languages/#{resource.id}/edit">Edit</a>\n)
+        expected += %Q(<a href="/languages/#{resource.id}" data-confirm="Are you sure?")
+        expected += %Q( data-method="delete" rel="nofollow">Delete</a>\n)
+        helper.render_actions_for(resource).should eq(expected)
+      end
+    end
+  end
 end

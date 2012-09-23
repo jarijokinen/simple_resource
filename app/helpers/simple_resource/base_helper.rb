@@ -97,5 +97,9 @@ module SimpleResource
         controller_namespaces | [resource]
       end
     end
+
+    def render_actions_for(resource)
+      render "actions", resource: resource
+    end
   end
 end
