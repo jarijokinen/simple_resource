@@ -71,5 +71,13 @@ module SimpleResource
         link_to(t("simple_resource.#{action_name.to_s}", default: title), path)
       end
     end
+
+    def default_actions_for(resource)
+      html = Array.new
+      html << link_to_action(:show, "Show", resource_path(resource))
+      html << link_to_action(:edit, "Edit", edit_resource_path(resource))
+      html << link_to_action(:delete, "Delete", resource_path(resource))
+      html.join("\n").html_safe
+    end
   end
 end
