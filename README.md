@@ -1,5 +1,7 @@
 # SimpleResource
 
+[![Build Status](https://secure.travis-ci.org/jarijokinen/simple_resource.png)](http://travis-ci.org/jarijokinen/simple_resource) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/jarijokinen/simple_resource)
+
 SimpleResource speeds up development of standard Rails applications by integrating [Inherited Resources](https://github.com/josevalim/inherited_resources), inherited views and form builders together.
 
 ## Features
