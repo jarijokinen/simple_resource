@@ -37,6 +37,5 @@ end
 
 Spork.each_run do
   require "factory_girl_rails"
-  ActiveSupport::Dependencies.clear
   FactoryGirl.reload
 end
