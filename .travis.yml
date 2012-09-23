@@ -7,6 +7,8 @@ rvm:
   - ruby-head
   - jruby-head
   - ree
+before_script:
+  - "rake db:test:prepare"
 notifications:
   recipients:
     - info@jarijokinen.com
