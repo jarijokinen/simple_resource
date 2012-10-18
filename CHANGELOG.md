@@ -1,6 +1,6 @@
 # Changelog
 
-0.1.0 (September 23, 2012)
+0.1.0 (October 19, 2012)
 
 * First release with basic functionality
 
