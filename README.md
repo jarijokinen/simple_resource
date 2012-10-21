@@ -49,7 +49,7 @@ If you like to use simple_form only for products resource, put the above line in
 
 ### Creating own form builder
 
-Put your own form builder into the app/views/simple_resource/_foo_form.html.erb:
+Put your form builder into the app/views/simple_resource/builders/_my_builder.html.erb:
 
     <form>
       <% fields.each do |field| %>
@@ -60,7 +60,7 @@ Put your own form builder into the app/views/simple_resource/_foo_form.html.erb:
 
 Then use it (see section "Configuring form builder"):
 
-    <%= render_form "foo" %>
+    <%= render_form "my_builder" %>
 
 ### Overriding views
 
