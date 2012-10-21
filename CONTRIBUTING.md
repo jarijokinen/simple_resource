@@ -1,4 +1,4 @@
-# SimpleResource for Developers
+# Contributing to SimpleResource
 
 ## Forking the project
 
