@@ -1,5 +1,9 @@
 # Changelog
 
+0.2.0 (TBA)
+
+* Redirect to collection_url after create and update actions
+
 0.1.0 (October 19, 2012)
 
 * First release with basic functionality

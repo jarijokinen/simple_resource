@@ -99,7 +99,7 @@ describe "Languages resource" do
     end
   end
   
-  describe "editing a language", focus: true do
+  describe "editing a language" do
     let(:resource) { collection.first }
     let(:new_resource) { FactoryGirl.build(:language) }
 
