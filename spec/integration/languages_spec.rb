@@ -49,7 +49,7 @@ describe "Languages resource" do
     end
 
     it "has a correct heading" do
-      page.should have_css "h1", "New Language"
+      page.should have_css "h1", text: "New Language"
     end
 
     it "has a name field" do
@@ -70,8 +70,99 @@ describe "Languages resource" do
         click_button "Create Language"
       end
 
-      it "redirects to languages index" do
+      it "redirects to index" do
         page.current_path.should == "/languages"
+      end
+
+      it "displays success message" do
+        page.should have_content "Language was successfully created"
+      end
+
+      it "lists the new resource" do
+        page.should have_content resource.name
+      end
+    end
+
+    context "without a required field" do
+      before :each do
+        click_button "Create Language"
+      end
+      
+      it "stays on the same page" do
+        page.should have_css "h1", text: "New Language"
+        page.should have_field "Name"
+      end
+
+      it "displays inline error message" do
+        page.should have_content "can't be blank"
+      end
+    end
+  end
+  
+  describe "editing a language", focus: true do
+    let(:resource) { collection.first }
+    let(:new_resource) { FactoryGirl.build(:language) }
+
+    before :each do
+      click_link "Edit"
+    end
+    
+    it "has a correct title" do
+      page.should have_xpath "//title", text: "Edit Language | Dummy"
+    end
+
+    it "has a correct heading" do
+      page.should have_css "h1", text: "Edit Language"
+    end
+
+    it "has a name field" do
+      page.should have_field "Name", with: resource.name
+    end
+
+    it "has a update language button" do
+      page.should have_button "Update Language"
+    end
+
+    it "has a cancel link" do
+      page.should have_link "Cancel", href: "/languages"
+    end
+
+    context "with correct values" do
+      before :each do
+        fill_in "Name", with: new_resource.name
+        click_button "Update Language"
+      end
+
+      it "redirects to index" do
+        page.current_path.should == "/languages"
+      end
+
+      it "displays success message" do
+        page.should have_content "Language was successfully updated"
+      end
+
+      it "lists the new resource" do
+        page.should have_content new_resource.name
+      end
+      
+      it "does not list the old resource" do
+        page.should_not have_content resource.name
+      end
+    end
+
+    context "without a required field" do
+      before :each do
+        fill_in "Name", with: ""
+        click_button "Update Language"
+      end
+      
+      it "stays on the same page" do
+        page.should have_css "h1", text: "Edit Language"
+        page.should have_field "Name"
+      end
+
+      it "displays inline error message" do
+        page.should have_content "can't be blank"
       end
     end
   end
