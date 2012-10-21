@@ -369,8 +369,8 @@ describe SimpleResource::BaseHelper do
               </div>
               <fieldset class="inputs">
                 <ol>
-                  <li class="string input optional stringish" id="language_name_input">
-                    <label class=" label" for="language_name">Name</label>
+                  <li class="string input required stringish" id="language_name_input">
+                    <label class=" label" for="language_name">Name<abbr title="required">*</abbr></label>
                     <input id="language_name" maxlength="255" name="language[name]" type="text" />
                   </li>
                 </ol>
@@ -411,8 +411,8 @@ describe SimpleResource::BaseHelper do
               </div>
               <fieldset class="inputs">
                 <ol>
-                  <li class="string input optional stringish" id="language_name_input">
-                    <label class=" label" for="language_name">Name</label>
+                  <li class="string input required stringish" id="language_name_input">
+                    <label class=" label" for="language_name">Name<abbr title="required">*</abbr></label>
                     <input id="language_name" maxlength="255" name="language[name]" type="text" 
                       value="#{language.name}" />
                   </li>
