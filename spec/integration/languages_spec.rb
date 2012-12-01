@@ -13,7 +13,7 @@ describe "Languages resource" do
     end
 
     it "has a correct heading" do
-      page.should have_css "h1", "Languages"
+      page.should have_css "h1", text: "Languages"
     end
 
     it "lists all languages" do
