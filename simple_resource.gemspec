@@ -16,7 +16,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^spec/})
   gem.require_paths = ["lib"]
 
-  gem.add_dependency "rails", "~> 3.2.8"
+  gem.add_dependency "rails", "~> 3.2.9"
   gem.add_dependency "inherited_resources", "~> 1.3.1"
 
   gem.add_development_dependency "capybara"
