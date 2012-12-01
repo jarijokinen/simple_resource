@@ -9,7 +9,7 @@ describe "Languages resource" do
 
   describe "index" do
     it "has a correct title" do
-      page.should have_xpath "//title", text: "Languages | Dummy"
+      page.html.should have_xpath "//title", text: "Languages | Dummy"
     end
 
     it "has a correct heading" do
@@ -45,7 +45,7 @@ describe "Languages resource" do
     end
     
     it "has a correct title" do
-      page.should have_xpath "//title", text: "New Language | Dummy"
+      page.html.should have_xpath "//title", text: "New Language | Dummy"
     end
 
     it "has a correct heading" do
@@ -108,7 +108,7 @@ describe "Languages resource" do
     end
     
     it "has a correct title" do
-      page.should have_xpath "//title", text: "Edit Language | Dummy"
+      page.html.should have_xpath "//title", text: "Edit Language | Dummy"
     end
 
     it "has a correct heading" do
