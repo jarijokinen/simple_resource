@@ -22,11 +22,11 @@ And then execute:
 
 ## Running tests
 
-Start Guard:
-
-    $ bundle exec guard start
-
-Run all specs by pressing the enter.
+    $ cd spec/dummy
+    $ rake db:setup
+    $ rake db:test:clone
+    $ cd ../..
+    $ rake spec
 
 ## Adding a new feature
 
