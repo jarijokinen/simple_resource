@@ -74,12 +74,12 @@ describe SimpleResource::BaseHelper do
 
   describe "#new_resource_link" do
     it "returns default version of new resource link" do
-      helper.new_resource_link.should eq('<a href="/languages/new">New Language</a>')
+      helper.new_resource_link.should eq('<a href="/languages/new" class="btn"><i class="icon-plus-sign"></i> New Language</a>')
     end
 
     it "returns translated version of new resource link" do
       set_locale
-      helper.new_resource_link.should eq('<a href="/languages/new">Uusi Kieli</a>')
+      helper.new_resource_link.should eq('<a href="/languages/new" class="btn"><i class="icon-plus-sign"></i> Uusi Kieli</a>')
       reset_locale
     end 
   end
@@ -176,43 +176,43 @@ describe SimpleResource::BaseHelper do
   describe "#link_to_action" do
     context "with action :show" do
       it "returns show link" do
-        helper.link_to_action(:show, "Show", "/languages/1").should eq('<a href="/languages/1">Show</a>')
+        helper.link_to_action(:show, "Show", "/languages/1").should eq('<a href="/languages/1" class="btn btn-mini"><i class="icon-zoom-in"></i> Show</a>')
       end
       
       it "returns translated show link" do
         set_locale
-        helper.link_to_action(:show, "Näytä", "/languages/1").should eq('<a href="/languages/1">Näytä</a>')
+        helper.link_to_action(:show, "Näytä", "/languages/1").should eq('<a href="/languages/1" class="btn btn-mini"><i class="icon-zoom-in"></i> Näytä</a>')
         reset_locale
       end
     end
     
     context "with action :edit" do
       it "returns edit link" do
-        helper.link_to_action(:edit, "Edit", "/languages/1/edit").should eq('<a href="/languages/1/edit">Edit</a>')
+        helper.link_to_action(:edit, "Edit", "/languages/1/edit").should eq('<a href="/languages/1/edit" class="btn btn-mini"><i class="icon-edit"></i> Edit</a>')
       end
       
       it "returns translated edit link" do
         set_locale
-        helper.link_to_action(:edit, "Muokkaa", "/languages/1/edit").should eq('<a href="/languages/1/edit">Muokkaa</a>')
+        helper.link_to_action(:edit, "Muokkaa", "/languages/1/edit").should eq('<a href="/languages/1/edit" class="btn btn-mini"><i class="icon-edit"></i> Muokkaa</a>')
         reset_locale
       end
     end
     
     context "with action :delete" do
       it "returns delete link" do
-        helper.link_to_action(:delete, "Delete", "/languages/1").should eq('<a href="/languages/1" data-confirm="Are you sure?" data-method="delete" rel="nofollow">Delete</a>')
+        helper.link_to_action(:delete, "Delete", "/languages/1").should eq('<a href="/languages/1" class="btn btn-mini btn-danger" data-confirm="Are you sure?" data-method="delete" rel="nofollow"><i class="icon-trash icon-white"></i> Delete</a>')
       end
       
       it "returns translated delete link" do
         set_locale
-        helper.link_to_action(:delete, "Poista", "/languages/1").should eq('<a href="/languages/1" data-confirm="Oletko varma?" data-method="delete" rel="nofollow">Poista</a>')
+        helper.link_to_action(:delete, "Poista", "/languages/1").should eq('<a href="/languages/1" class="btn btn-mini btn-danger" data-confirm="Oletko varma?" data-method="delete" rel="nofollow"><i class="icon-trash icon-white"></i> Poista</a>')
         reset_locale
       end
     end
     
     context "with custom action" do
       it "returns link to custom action" do
-        helper.link_to_action(:children, "Children", "/languages/1/children").should eq('<a href="/languages/1/children">Children</a>')
+        helper.link_to_action(:children, "Children", "/languages/1/children").should eq('<a href="/languages/1/children" class="btn btn-mini">Children</a>')
       end
     end
   end
@@ -222,10 +222,10 @@ describe SimpleResource::BaseHelper do
 
     it "returns default actions for given resource" do
       collection.each do |resource|
-        expected =  %Q(<a href="/languages/#{resource.id}">Show</a>\n)
-        expected += %Q(<a href="/languages/#{resource.id}/edit">Edit</a>\n)
-        expected += %Q(<a href="/languages/#{resource.id}" data-confirm="Are you sure?")
-        expected += %Q( data-method="delete" rel="nofollow">Delete</a>)
+        expected =  %Q(<a href="/languages/#{resource.id}" class="btn btn-mini"><i class="icon-zoom-in"></i> Show</a>\n)
+        expected += %Q(<a href="/languages/#{resource.id}/edit" class="btn btn-mini"><i class="icon-edit"></i> Edit</a>\n)
+        expected += %Q(<a href="/languages/#{resource.id}" class="btn btn-mini btn-danger" data-confirm="Are you sure?")
+        expected += %Q( data-method="delete" rel="nofollow"><i class="icon-trash icon-white"></i> Delete</a>)
         helper.default_actions_for(resource).should eq(expected)
       end
     end
@@ -315,10 +315,10 @@ describe SimpleResource::BaseHelper do
 
     it "returns actions for given resource in HTML" do
       collection.each do |resource|
-        expected =  %Q(<a href="/languages/#{resource.id}">Show</a>\n)
-        expected += %Q(<a href="/languages/#{resource.id}/edit">Edit</a>\n)
-        expected += %Q(<a href="/languages/#{resource.id}" data-confirm="Are you sure?")
-        expected += %Q( data-method="delete" rel="nofollow">Delete</a>\n)
+        expected =  %Q(<a href="/languages/#{resource.id}" class="btn btn-mini"><i class="icon-zoom-in"></i> Show</a>\n)
+        expected += %Q(<a href="/languages/#{resource.id}/edit" class="btn btn-mini"><i class="icon-edit"></i> Edit</a>\n)
+        expected += %Q(<a href="/languages/#{resource.id}" class="btn btn-mini btn-danger" data-confirm="Are you sure?")
+        expected += %Q( data-method="delete" rel="nofollow"><i class="icon-trash icon-white"></i> Delete</a>\n)
         helper.render_actions_for(resource).should eq(expected)
       end
     end
@@ -337,10 +337,10 @@ describe SimpleResource::BaseHelper do
 
       collection.each do |resource|
         expected += %Q(<tr><td>#{resource.name}</td><td class="actions">)
-        expected += %Q(<a href="/languages/#{resource.id}">Show</a>)
-        expected += %Q(<a href="/languages/#{resource.id}/edit">Edit</a>)
-        expected += %Q(<a href="/languages/#{resource.id}" data-confirm="Are you sure?")
-        expected += %Q( data-method="delete" rel="nofollow">Delete</a>)
+        expected += %Q(<a href="/languages/#{resource.id}" class="btn btn-mini"><i class="icon-zoom-in"></i> Show</a>)
+        expected += %Q(<a href="/languages/#{resource.id}/edit" class="btn btn-mini"><i class="icon-edit"></i> Edit</a>)
+        expected += %Q(<a href="/languages/#{resource.id}" class="btn btn-mini btn-danger" data-confirm="Are you sure?")
+        expected += %Q( data-method="delete" rel="nofollow"><i class="icon-trash icon-white"></i> Delete</a>)
         expected += %Q(</td></tr>)
       end
 

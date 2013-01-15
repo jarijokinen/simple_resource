@@ -83,6 +83,7 @@ module SimpleResource
     end
 
     def icon_for(action)
+      return "" if !SimpleResource::Configuration.respond_to?("icon_classes_for_#{action.to_s}")
       icon_classes = Array.new
       icon_classes << SimpleResource::Configuration.icon_classes
       icon_classes << SimpleResource::Configuration.send("icon_classes_for_#{action.to_s}")
@@ -93,7 +94,10 @@ module SimpleResource
       button_classes = Array.new
       button_classes << SimpleResource::Configuration.button_classes
       button_classes << SimpleResource::Configuration.mini_button_classes if mini
-      button_classes << SimpleResource::Configuration.send("button_classes_for_#{action.to_s}")
+      button_classes << (
+        SimpleResource::Configuration.respond_to?("button_classes_for_#{action.to_s}") ?
+        SimpleResource::Configuration.send("button_classes_for_#{action.to_s}") :
+        "")
       button_classes.join(" ").strip
     end
 
