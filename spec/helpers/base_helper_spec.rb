@@ -238,17 +238,17 @@ describe SimpleResource::BaseHelper do
       end
     end
 
-   context "when namespace exists" do
-     before :each do
-       @controller = Backend::LanguagesController.new
-       @controller.request = ActionDispatch::TestRequest.new
-       @controller.instance_variable_set("@language", language)
-     end
+    context "when namespace exists" do
+      before :each do
+        @controller = Backend::LanguagesController.new
+        @controller.request = ActionDispatch::TestRequest.new
+        @controller.instance_variable_set("@language", language)
+      end
 
-     it "returns namespace in array" do
-       helper.controller_namespaces.should == ["backend"]
-     end
-   end
+      it "returns namespace in array" do
+        helper.controller_namespaces.should == ["backend"]
+      end
+    end
   end
 
   describe "#resource_form_path" do

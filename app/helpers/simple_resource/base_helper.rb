@@ -13,16 +13,16 @@ module SimpleResource
     end
 
     def collection_title
-      I18n.t("activerecord.models.#{controller_name.singularize}.other",
+      t("activerecord.models.#{controller_name.singularize}.other",
         default: controller_name.humanize)
     end
 
     def new_resource_title
-      I18n.t("simple_resource.titles.new_resource", resource_name: resource_human_name)
+      t("simple_resource.titles.new_resource", resource_name: resource_human_name)
     end
     
     def new_resource_link_title
-      I18n.t("simple_resource.titles.new_resource", resource_name: resource_human_name)
+      t("simple_resource.links.new_resource", resource_name: resource_human_name)
     end
 
     def new_resource_link
@@ -30,7 +30,7 @@ module SimpleResource
     end
 
     def edit_resource_title
-      I18n.t("simple_resource.titles.edit_resource", resource_name: resource_human_name)
+      t("simple_resource.titles.edit_resource", resource_name: resource_human_name)
     end
 
     def resource_attributes
@@ -51,7 +51,7 @@ module SimpleResource
 
     def attribute_human_name(attribute_name)
       attribute_name = attribute_name.to_s
-      I18n.t("activerecord.attributes.#{controller_name.singularize}.#{attribute_name}",
+      t("activerecord.attributes.#{controller_name.singularize}.#{attribute_name}",
         default: attribute_name.humanize)
     end
 
@@ -68,7 +68,7 @@ module SimpleResource
       action_name = action_name.to_sym
       if action_name == :delete
         link_to(t("simple_resource.#{action_name.to_s}", default: title), path,
-          method: :delete, confirm: t("simple_resource.messages.delete_confirmation", default: "Are you sure?"))
+          method: :delete, confirm: t("simple_resource.messages.delete_confirmation"))
       else
         link_to(t("simple_resource.#{action_name.to_s}", default: title), path)
       end
