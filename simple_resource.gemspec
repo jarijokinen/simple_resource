@@ -19,7 +19,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency "rails", "~> 3.2.11"
   gem.add_dependency "inherited_resources", "~> 1.3.1"
 
-  gem.add_development_dependency "capybara"
+  gem.add_development_dependency "capybara", "~> 1.1.4"
   gem.add_development_dependency "database_cleaner"
   gem.add_development_dependency "factory_girl_rails"
   gem.add_development_dependency "forgery"
