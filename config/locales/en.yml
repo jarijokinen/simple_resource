@@ -1,0 +1,15 @@
+en:
+  simple_resource:
+    buttons:
+      cancel: "Cancel"
+    links:
+      new_resource: "New %{resource_name}"
+      edit_resource: "Edit %{resource_name}"
+      show: "Show"
+      edit: "Edit"
+      delete: "Delete"
+    messages:
+      delete_confirmation: "Are you sure?"
+    titles:
+      new_resource: "New %{resource_name}"
+      edit_resource: "Edit %{resource_name}"

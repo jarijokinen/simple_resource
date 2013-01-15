@@ -1,4 +1,9 @@
 <% @title ||= collection_title %>
 
-<%= render_collection_table %>
+<%=
+  unless collection.blank?
+    render_collection_table
+  end
+%>
+
 <%= new_resource_link %>

@@ -181,7 +181,7 @@ describe SimpleResource::BaseHelper do
       
       it "returns translated show link" do
         set_locale
-        helper.link_to_action(:show, "Show", "/languages/1").should eq('<a href="/languages/1">Näytä</a>')
+        helper.link_to_action(:show, "Näytä", "/languages/1").should eq('<a href="/languages/1">Näytä</a>')
         reset_locale
       end
     end
@@ -193,7 +193,7 @@ describe SimpleResource::BaseHelper do
       
       it "returns translated edit link" do
         set_locale
-        helper.link_to_action(:edit, "Edit", "/languages/1/edit").should eq('<a href="/languages/1/edit">Muokkaa</a>')
+        helper.link_to_action(:edit, "Muokkaa", "/languages/1/edit").should eq('<a href="/languages/1/edit">Muokkaa</a>')
         reset_locale
       end
     end
@@ -205,7 +205,7 @@ describe SimpleResource::BaseHelper do
       
       it "returns translated delete link" do
         set_locale
-        helper.link_to_action(:delete, "Delete", "/languages/1").should eq('<a href="/languages/1" data-confirm="Oletko varma?" data-method="delete" rel="nofollow">Poista</a>')
+        helper.link_to_action(:delete, "Poista", "/languages/1").should eq('<a href="/languages/1" data-confirm="Oletko varma?" data-method="delete" rel="nofollow">Poista</a>')
         reset_locale
       end
     end
@@ -238,17 +238,17 @@ describe SimpleResource::BaseHelper do
       end
     end
 
-    context "when namespace exists" do
-      before :each do
-        @controller = Backend::LanguagesController.new
-        @controller.request = ActionDispatch::TestRequest.new
-        @controller.instance_variable_set("@language", language)
-      end
+   context "when namespace exists" do
+     before :each do
+       @controller = Backend::LanguagesController.new
+       @controller.request = ActionDispatch::TestRequest.new
+       @controller.instance_variable_set("@language", language)
+     end
 
-      it "returns namespace in array" do
-        helper.controller_namespaces.should == ["backend"]
-      end
-    end
+     it "returns namespace in array" do
+       helper.controller_namespaces.should == ["backend"]
+     end
+   end
   end
 
   describe "#resource_form_path" do

@@ -1,2 +1,4 @@
-class Backend::LanguagesController < SimpleResource::BaseController
+module Backend
+  class LanguagesController < SimpleResource::BaseController
+  end
 end

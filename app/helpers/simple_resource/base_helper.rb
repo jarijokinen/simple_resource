@@ -18,17 +18,19 @@ module SimpleResource
     end
 
     def new_resource_title
-      I18n.t("simple_resource.new_resource", resource_name: resource_human_name, 
-        default: "New #{resource_human_name}")
+      I18n.t("simple_resource.titles.new_resource", resource_name: resource_human_name)
+    end
+    
+    def new_resource_link_title
+      I18n.t("simple_resource.titles.new_resource", resource_name: resource_human_name)
     end
 
     def new_resource_link
-      link_to(new_resource_title, new_resource_path)
+      link_to(new_resource_link_title, new_resource_path)
     end
 
     def edit_resource_title
-      I18n.t("simple_resource.edit_resource", resource_name: resource_human_name, 
-        default: "Edit #{resource_human_name}")
+      I18n.t("simple_resource.titles.edit_resource", resource_name: resource_human_name)
     end
 
     def resource_attributes
@@ -66,7 +68,7 @@ module SimpleResource
       action_name = action_name.to_sym
       if action_name == :delete
         link_to(t("simple_resource.#{action_name.to_s}", default: title), path,
-          method: :delete, confirm: t("simple_resource.delete_confirmation", default: "Are you sure?"))
+          method: :delete, confirm: t("simple_resource.messages.delete_confirmation", default: "Are you sure?"))
       else
         link_to(t("simple_resource.#{action_name.to_s}", default: title), path)
       end
@@ -74,9 +76,9 @@ module SimpleResource
 
     def default_actions_for(resource)
       html = Array.new
-      html << link_to_action(:show, "Show", resource_path(resource))
-      html << link_to_action(:edit, "Edit", edit_resource_path(resource))
-      html << link_to_action(:delete, "Delete", resource_path(resource))
+      html << link_to_action(:show, t("simple_resource.links.show"), resource_path(resource))
+      html << link_to_action(:edit, t("simple_resource.links.edit"), edit_resource_path(resource))
+      html << link_to_action(:delete, t("simple_resource.links.delete"), resource_path(resource))
       html.join("\n").html_safe
     end
 
