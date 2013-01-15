@@ -1,7 +1,8 @@
 # Changelog
 
-0.3.0 (TBA)
+0.3.0 (January 15, 2013)
 
+* Devise support
 * Twitter Bootstrap support
 
 0.2.0 (January 15, 2013)

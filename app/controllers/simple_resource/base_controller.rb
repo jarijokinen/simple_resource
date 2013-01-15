@@ -4,7 +4,11 @@ module SimpleResource
       load_and_authorize_resource
 
       rescue_from CanCan::AccessDenied do |exception|
-        redirect_to root_url, alert: exception.message
+        if !current_user && respond_to?(:new_user_session_url)
+          redirect_to new_user_session_url, alert: exception.message
+        else
+          redirect_to root_url, alert: exception.message
+        end
       end
     end
 
