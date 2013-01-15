@@ -1,6 +1,6 @@
 <% @title ||= collection_title %>
 
-<table>
+<table class="<%= table_classes_for(:collection) %>">
   <thead>
     <tr>
       <% attributes.each do |attribute_name| %>

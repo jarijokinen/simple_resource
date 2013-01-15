@@ -1,5 +1,14 @@
 module SimpleResource
   module Configuration
+    mattr_accessor :table_classes
+    self.table_classes = "table"
+    
+    mattr_accessor :table_classes_for_collection
+    self.table_classes_for_collection = "collection"
+    
+    mattr_accessor :table_classes_for_resource
+    self.table_classes_for_resource = "resource"
+
     mattr_accessor :button_classes
     self.button_classes = "btn"
     

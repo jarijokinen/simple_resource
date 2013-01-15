@@ -101,6 +101,13 @@ module SimpleResource
       button_classes.join(" ").strip
     end
 
+    def table_classes_for(table_type)
+      table_classes = Array.new
+      table_classes << SimpleResource::Configuration.table_classes
+      table_classes << SimpleResource::Configuration.send("table_classes_for_#{table_type.to_s}")
+      table_classes.join(" ").strip
+    end
+
     def controller_namespaces
       namespaces = controller_path.split("/")
       namespaces.pop

@@ -1,6 +1,6 @@
 <% @title ||= resource_title %>
 
-<table>
+<table class="<%= table_classes_for(:resource) %>">
   <tbody>
     <% resource_attributes.each do |attribute_name| %>
       <tr>

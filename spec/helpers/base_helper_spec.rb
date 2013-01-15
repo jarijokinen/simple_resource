@@ -332,7 +332,7 @@ describe SimpleResource::BaseHelper do
     let(:collection) { FactoryGirl.create_list(:language, 10) }
 
     it "returns collection table in HTML" do
-      expected =  %Q(<table>)
+      expected =  %Q(<table class="table collection">)
       expected += %Q(<thead><tr><th>Name</th><th>&nbsp;</th></tr></thead><tbody>)
 
       collection.each do |resource|
