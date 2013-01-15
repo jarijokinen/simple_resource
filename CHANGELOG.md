@@ -1,8 +1,9 @@
 # Changelog
 
-0.4.0 (TBA)
+0.4.0 (January 15, 2013)
 
 * Kaminari support
+* Classes for tables
 
 0.3.0 (January 15, 2013)
 
