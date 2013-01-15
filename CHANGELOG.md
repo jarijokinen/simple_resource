@@ -1,5 +1,9 @@
 # Changelog
 
+0.3.0 (TBA)
+
+* Twitter Bootstrap support
+
 0.2.0 (January 15, 2013)
 
 * CanCan support

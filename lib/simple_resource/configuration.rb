@@ -15,8 +15,8 @@ module SimpleResource
     mattr_accessor :button_classes_for_edit
     self.button_classes_for_edit = ""
     
-    mattr_accessor :button_classes_for_trash
-    self.button_classes_for_trash = "btn-danger"
+    mattr_accessor :button_classes_for_delete
+    self.button_classes_for_delete = "btn-danger"
 
     mattr_accessor :icon_classes
     self.icon_classes = ""

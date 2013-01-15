@@ -26,7 +26,7 @@ module SimpleResource
     end
 
     def new_resource_link
-      link_to(new_resource_link_title, new_resource_path)
+      link_to(icon_for(:new) + new_resource_link_title, new_resource_path, class: button_classes_for(:new))
     end
 
     def edit_resource_title
@@ -67,10 +67,10 @@ module SimpleResource
     def link_to_action(action_name, title, path)
       action_name = action_name.to_sym
       if action_name == :delete
-        link_to(t("simple_resource.#{action_name.to_s}", default: title), path,
+        link_to(icon_for(action_name) + t("simple_resource.#{action_name.to_s}", default: title), path, class: button_classes_for(action_name, true),
           method: :delete, confirm: t("simple_resource.messages.delete_confirmation"))
       else
-        link_to(t("simple_resource.#{action_name.to_s}", default: title), path)
+        link_to(icon_for(action_name) + t("simple_resource.#{action_name.to_s}", default: title), path, class: button_classes_for(action_name, true))
       end
     end
 
@@ -80,6 +80,21 @@ module SimpleResource
       html << link_to_action(:edit, t("simple_resource.links.edit"), edit_resource_path(resource))
       html << link_to_action(:delete, t("simple_resource.links.delete"), resource_path(resource))
       html.join("\n").html_safe
+    end
+
+    def icon_for(action)
+      icon_classes = Array.new
+      icon_classes << SimpleResource::Configuration.icon_classes
+      icon_classes << SimpleResource::Configuration.send("icon_classes_for_#{action.to_s}")
+      content_tag(:i, "", class: icon_classes.join(" ").strip).html_safe + " "
+    end
+    
+    def button_classes_for(action, mini = false)
+      button_classes = Array.new
+      button_classes << SimpleResource::Configuration.button_classes
+      button_classes << SimpleResource::Configuration.mini_button_classes if mini
+      button_classes << SimpleResource::Configuration.send("button_classes_for_#{action.to_s}")
+      button_classes.join(" ").strip
     end
 
     def controller_namespaces
