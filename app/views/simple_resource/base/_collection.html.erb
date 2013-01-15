@@ -20,3 +20,9 @@
     <% end %>
   </tbody>
 </table>
+
+<%= 
+  if defined?(Kaminari)  
+    paginate(collection)
+  end
+%>

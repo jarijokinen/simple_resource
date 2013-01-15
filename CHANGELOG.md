@@ -1,5 +1,9 @@
 # Changelog
 
+0.4.0 (TBA)
+
+* Kaminari support
+
 0.3.0 (January 15, 2013)
 
 * Devise support
