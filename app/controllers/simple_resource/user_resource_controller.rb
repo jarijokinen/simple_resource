@@ -1,5 +1,5 @@
 module SimpleResource
-  class UserController < SimpleResource::BaseController
+  class UserResourceController < SimpleResource::BaseController
     defaults route_prefix: ""
     
     protected
