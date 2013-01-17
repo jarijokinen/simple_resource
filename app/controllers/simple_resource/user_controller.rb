@@ -1,5 +1,7 @@
 module SimpleResource
   class UserController < SimpleResource::BaseController
+    defaults route_prefix: ""
+    
     protected
   
     def begin_of_association_chain
