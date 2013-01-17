@@ -1,6 +1,6 @@
 # Changelog
 
-0.5.0 (TBA)
+0.5.0 (January 17, 2013)
 
 * SimpleResource::UserController for resources that belongs to User
 
