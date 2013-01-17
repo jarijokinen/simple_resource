@@ -1,5 +1,9 @@
 # Changelog
 
+0.6.0 (January 17, 2013)
+
+* Moved before_filter :authenticate_user! to BaseController
+
 0.5.0 (January 17, 2013)
 
 * SimpleResource::UserController for resources that belongs to User
