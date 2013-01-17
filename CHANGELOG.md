@@ -1,5 +1,9 @@
 # Changelog
 
+0.5.0 (TBA)
+
+* SimpleResource::UserController for resources that belongs to User
+
 0.4.0 (January 15, 2013)
 
 * Kaminari support
