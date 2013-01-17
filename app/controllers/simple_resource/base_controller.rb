@@ -11,6 +11,10 @@ module SimpleResource
         end
       end
     end
+    
+    if defined?(Devise)
+      before_filter :authenticate_user!
+    end
 
     inherit_resources
     defaults route_prefix: ""
