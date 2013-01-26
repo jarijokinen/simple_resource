@@ -59,7 +59,11 @@ module SimpleResource
       value = resource.send(attribute_name).to_s.truncate(truncation)
       if attribute_name.to_s.match(/_id$/)
         model_name = attribute_name.gsub(/_id$/, "").classify
-        value = eval(model_name).find(value).to_s
+        begin
+          value = eval(model_name).find(value).to_s
+        rescue ActiveRecord::RecordNotFound
+          value = ""
+        end
       end
       value
     end
