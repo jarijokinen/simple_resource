@@ -231,26 +231,6 @@ describe SimpleResource::BaseHelper do
     end
   end
 
-  describe "#controller_namespaces" do
-    context "when no namespaces exist" do
-      it "returns an empty array" do
-        helper.controller_namespaces.should be_empty
-      end
-    end
-
-    context "when namespace exists" do
-      before :each do
-        @controller = Backend::LanguagesController.new
-        @controller.request = ActionDispatch::TestRequest.new
-        @controller.instance_variable_set("@language", language)
-      end
-
-      it "returns namespace in array" do
-        helper.controller_namespaces.should == ["backend"]
-      end
-    end
-  end
-
   describe "#resource_form_path" do
     describe "new action" do
       before :each do
@@ -276,7 +256,7 @@ describe SimpleResource::BaseHelper do
         end
 
         it "returns path with namespace" do
-          helper.resource_form_path.should == ["backend", @language]
+          helper.resource_form_path.should eq("/backend/languages")
         end
       end
     end
@@ -304,7 +284,7 @@ describe SimpleResource::BaseHelper do
         end
 
         it "returns path with namespace" do
-          helper.resource_form_path.should == ["backend", language]
+          helper.resource_form_path.should eq("/backend/languages/#{language.id}")
         end
       end
     end

@@ -108,21 +108,11 @@ module SimpleResource
       table_classes.join(" ").strip
     end
 
-    def controller_namespaces
-      namespaces = controller_path.split("/")
-      namespaces.pop
-      namespaces
-    end
-
     def resource_form_path
-      if controller_namespaces.empty?
-        if !resource.new_record?
-          resource_path
-        else
-          collection_path
-        end
+      if resource.new_record?
+        collection_path
       else
-        controller_namespaces | [resource]
+        resource_path
       end
     end
 
