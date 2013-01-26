@@ -1,5 +1,9 @@
 # Changelog
 
+0.6.1 (January 26, 2013)
+
+* Fix resource_form_path helper when using namespaces
+
 0.6.0 (January 17, 2013)
 
 * Moved before_filter :authenticate_user! to BaseController
