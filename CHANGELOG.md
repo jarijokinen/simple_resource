@@ -1,5 +1,9 @@
 # Changelog
 
+0.7.0 (TBA)
+
+* Support for Ruby 2 and Rails 4
+
 0.6.1 (January 26, 2013)
 
 * Fix resource_form_path helper when using namespaces

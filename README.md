@@ -16,8 +16,8 @@ SimpleResource speeds up development of standard Rails applications by integrati
 
 ## Requirements
 
-* Ruby 1.9 or greater
-* Rails 3.2 or greater
+* Ruby 2.0 or greater
+* Rails 4.0 or greater
 
 ## Installation
 
@@ -73,4 +73,4 @@ If you have any questions or issues with SimpleResource, or if you like to repor
 
 ## License
 
-MIT License. Copyright (c) 2012 [Jari Jokinen](http://jarijokinen.com). See [LICENSE](https://github.com/jarijokinen/simple_resource/blob/master/LICENSE.txt) for further details.
+MIT License. Copyright (c) 2013 [Jari Jokinen](http://jarijokinen.com). See [LICENSE](https://github.com/jarijokinen/simple_resource/blob/master/LICENSE.txt) for further details.
